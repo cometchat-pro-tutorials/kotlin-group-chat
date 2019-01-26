@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CometChat</string>
+    <string name="username">Username</string>
+    <string name="join_chat">Join Chat</string>
+    <string name="send">Send</string>
+    <string name="enter_message">Enter message…</string>
 </resources>
