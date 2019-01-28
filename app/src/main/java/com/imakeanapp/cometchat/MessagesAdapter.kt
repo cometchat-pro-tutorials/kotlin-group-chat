@@ -9,7 +9,7 @@ import com.cometchat.pro.models.BaseMessage
 import com.cometchat.pro.models.TextMessage
 
 class MessagesAdapter(private val uid: String,
-                      private var messages: List<BaseMessage>)  : RecyclerView.Adapter<MessagesAdapter.MessageViewHolder>() {
+                      private var messages: MutableList<BaseMessage>)  : RecyclerView.Adapter<MessagesAdapter.MessageViewHolder>() {
 
     companion object {
         private const val SENT = 0
@@ -43,8 +43,13 @@ class MessagesAdapter(private val uid: String,
     }
 
     fun updateMessages(messages: List<BaseMessage>) {
-        this.messages = messages
+        this.messages = messages.toMutableList()
         notifyDataSetChanged()
+    }
+
+    fun appendMessage(message: BaseMessage) {
+        this.messages.add(message)
+        notifyItemInserted(this.messages.size - 1)
     }
 
     inner class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

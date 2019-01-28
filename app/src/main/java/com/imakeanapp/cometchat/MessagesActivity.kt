@@ -19,9 +19,11 @@ class MessagesActivity : AppCompatActivity() {
 
     private lateinit var enterMessage: EditText
     private lateinit var send: Button
-    private lateinit var messages: RecyclerView
+    private lateinit var messagesList: RecyclerView
     private lateinit var messagesAdapter: MessagesAdapter
 
+    private val listenerID = "MESSAGES_LISTENER"
+    private val roomID = "androidroom"
     private var isLoggingOut = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,17 +34,20 @@ class MessagesActivity : AppCompatActivity() {
 
         enterMessage = findViewById(R.id.enter_message)
         send = findViewById(R.id.send_message)
-        messages = findViewById(R.id.messages)
-        messages.layoutManager = LinearLayoutManager(this)
-        messagesAdapter = MessagesAdapter(CometChat.getLoggedInUser().uid, listOf())
-        messages.adapter = messagesAdapter
+
+        messagesList = findViewById(R.id.messages)
+        val layoutMgr = LinearLayoutManager(this)
+        layoutMgr.stackFromEnd = true
+        messagesList.layoutManager = layoutMgr
+
+        messagesAdapter = MessagesAdapter(CometChat.getLoggedInUser().uid, mutableListOf())
+        messagesList.adapter = messagesAdapter
 
         send.setOnClickListener {
             sendMessage()
         }
 
         joinGroup()
-        fetchMessages()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -57,25 +62,46 @@ class MessagesActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        CometChat.addMessageListener(listenerID, object : CometChat.MessageListener() {
+            override fun onTextMessageReceived(message: TextMessage) {
+                messagesAdapter.appendMessage(message)
+                scrollToBottom()
+            }
+        })
+    }
+
+    override fun onPause() {
+        super.onPause()
+        CometChat.removeMessageListener(listenerID)
+    }
+
     private fun joinGroup() {
         CometChat.joinGroup(
-            "androidroom",
+            roomID,
             CometChatConstants.GROUP_TYPE_PUBLIC,
             "",
             object : CometChat.CallbackListener<String>() {
                 override fun onSuccess(successMessage: String) {
-                    Log.d("CometChat", "Group joined successfully")
+                    fetchMessages()
                 }
 
                 override fun onError(e: CometChatException) {
-                    Log.d("CometChat", "Group joining failed with exception ${e.message}")
+                    e.code?.let {
+                        // For now, we'll just keep on attempting to join the group
+                        // because persistence is out of the scope for this tutorial
+                        if (it.contentEquals("ERR_ALREADY_JOINED")) {
+                            fetchMessages()
+                        }
+                    }
                 }
             })
     }
 
     private fun sendMessage() {
         val textMessage = TextMessage(
-            "androidroom",
+            roomID,
             enterMessage.text.toString(),
             CometChatConstants.MESSAGE_TYPE_TEXT,
             CometChatConstants.RECEIVER_TYPE_GROUP
@@ -84,31 +110,40 @@ class MessagesActivity : AppCompatActivity() {
         CometChat.sendMessage(textMessage, object : CometChat.CallbackListener<TextMessage>() {
             override fun onSuccess(message: TextMessage) {
                 enterMessage.setText("")
-                Log.d("CometChat", "Message sent successfully: $message")
+                messagesAdapter.appendMessage(message)
+                scrollToBottom()
             }
 
             override fun onError(e: CometChatException) {
-                Log.d("CometChat", "Message sending failed with exception: ${e.message}")
+                Log.d("CometChat", "Message send failed: ${e.message}")
             }
         })
     }
 
     private fun fetchMessages() {
         val messagesRequest = MessagesRequest.MessagesRequestBuilder()
-            .setGUID("androidroom")
+            .setGUID(roomID)
             .setLimit(30)
             .build()
 
         messagesRequest.fetchPrevious(object : CometChat.CallbackListener<List<BaseMessage>>() {
             override fun onSuccess(messages: List<BaseMessage>) {
-                Log.d("CometChat", "Messages received ${messages.joinToString()}")
                 messagesAdapter.updateMessages(messages)
+                scrollToBottom()
             }
 
             override fun onError(e: CometChatException) {
-                Log.d("CometChat", "Message sending failed with exception: ${e.message}")
+                Log.d("CometChat", "Fetch messages failed: ${e.message}")
             }
         })
+    }
+
+    private fun scrollToBottom() {
+        messagesList.scrollToPosition(messagesAdapter.itemCount - 1)
+    }
+
+    override fun onBackPressed() {
+        logout()
     }
 
     private fun logout() {
@@ -122,19 +157,8 @@ class MessagesActivity : AppCompatActivity() {
 
     private fun logoutFromCometChat(success: () -> Unit, failed: () -> Unit) {
         CometChat.logout(object : CometChat.CallbackListener<String>() {
-            override fun onSuccess(successMessage: String) {
-                Log.d("CometChat", "Logout successful $successMessage")
-                success.invoke()
-            }
-
-            override fun onError(e: CometChatException) {
-                Log.d("CometChat", "Logout failed with exception: ${e.message}")
-                failed.invoke()
-            }
+            override fun onSuccess(successMessage: String) { success.invoke() }
+            override fun onError(e: CometChatException) { failed.invoke() }
         })
-    }
-
-    override fun onBackPressed() {
-        logout()
     }
 }

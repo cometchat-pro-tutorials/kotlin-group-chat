@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onError(e: CometChatException) {
-                Log.d("CometChat", "Login failed with exception: ${e.message}")
+                Log.d("CometChat", "Login failed: ${e.message}")
                 enableAuthField()
             }
         })

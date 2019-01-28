@@ -14,11 +14,11 @@ class App : Application() {
 
         CometChat.init(this, appID, object : CometChat.CallbackListener<String>() {
             override fun onSuccess(message: String) {
-                Log.d("CometChat", "Initialization completed successfully: $message")
+                Log.d("CometChat", "Initialization completed: $message")
             }
 
             override fun onError(e: CometChatException) {
-                Log.d("CometChat", "Initialization failed with exception: ${e.message}")
+                Log.d("CometChat", "Initialization failed: ${e.message}")
             }
         })
     }
