@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cometchat.pro.core.CometChat
 import com.cometchat.pro.exceptions.CometChatException
@@ -47,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onError(e: CometChatException) {
-                Log.d("CometChat", "Login failed: ${e.message}")
+                Toast.makeText(this@MainActivity, "Error or username doesn't exist.", Toast.LENGTH_SHORT).show()
                 enableAuthField()
             }
         })
