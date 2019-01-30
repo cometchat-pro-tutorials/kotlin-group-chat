@@ -16,8 +16,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var join: Button
     private lateinit var username: EditText
 
-    private val apiKey = "3947796f62059ce5ff623f4e8a664b0caac03ea9"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -37,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun login() {
-        CometChat.login(username.text.toString(), apiKey, object : CometChat.CallbackListener<User>() {
+        CometChat.login(username.text.toString(), getString(R.string.apiKey), object : CometChat.CallbackListener<User>() {
             override fun onSuccess(user: User) {
                 username.setText("")
 

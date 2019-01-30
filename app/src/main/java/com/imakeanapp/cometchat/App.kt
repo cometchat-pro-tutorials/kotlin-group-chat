@@ -7,12 +7,10 @@ import com.cometchat.pro.exceptions.CometChatException
 
 class App : Application() {
 
-    private val appID = "160ee9f32a167"
-
     override fun onCreate() {
         super.onCreate()
 
-        CometChat.init(this, appID, object : CometChat.CallbackListener<String>() {
+        CometChat.init(this, getString(R.string.appID), object : CometChat.CallbackListener<String>() {
             override fun onSuccess(message: String) {
                 Log.d("CometChat", "Initialization completed: $message")
             }

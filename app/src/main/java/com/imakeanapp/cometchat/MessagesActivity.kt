@@ -23,14 +23,11 @@ class MessagesActivity : AppCompatActivity() {
     private lateinit var messagesAdapter: MessagesAdapter
 
     private val listenerID = "MESSAGES_LISTENER"
-    private val roomID = "androidroom"
-    private var isLoggingOut = false
+    private val roomID = "supergroup"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_messages)
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         enterMessage = findViewById(R.id.enter_message)
         send = findViewById(R.id.send_message)
@@ -48,18 +45,6 @@ class MessagesActivity : AppCompatActivity() {
         }
 
         joinGroup()
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                logout()
-                true
-            }
-            else -> {
-                super.onOptionsItemSelected(item)
-            }
-        }
     }
 
     override fun onResume() {
@@ -140,25 +125,5 @@ class MessagesActivity : AppCompatActivity() {
 
     private fun scrollToBottom() {
         messagesList.scrollToPosition(messagesAdapter.itemCount - 1)
-    }
-
-    override fun onBackPressed() {
-        logout()
-    }
-
-    private fun logout() {
-        if (!isLoggingOut) {
-            logoutFromCometChat(
-                { runOnUiThread { super@MessagesActivity.onBackPressed() } },
-                { runOnUiThread { isLoggingOut = false } }
-            )
-        }
-    }
-
-    private fun logoutFromCometChat(success: () -> Unit, failed: () -> Unit) {
-        CometChat.logout(object : CometChat.CallbackListener<String>() {
-            override fun onSuccess(successMessage: String) { success.invoke() }
-            override fun onError(e: CometChatException) { failed.invoke() }
-        })
     }
 }
