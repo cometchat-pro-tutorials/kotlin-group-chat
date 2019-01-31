@@ -4,7 +4,7 @@ This example shows how to build an anonymous group chat with Kotlin.
 
 <img src="screenshots/screenshot_1.png" height="512" width="280"> <img src="screenshots/screenshot_2.png" height="512" width="280">
 
-Jump straight into the code or read the accompanying step-by-step guide here on our blog.
+Jump straight into the code or read the accompanying step-by-step guide [here](https://www.cometchat.com/blog/).
 
 ## Technology
 This demo uses:
@@ -14,22 +14,18 @@ This demo uses:
 * Material Design Theme
 
 ## Running the demo locally
-1. Download the repository [here](https://github.com/arthlimchiu/CometChatPro-Tutorial.git) or by running `git clone https://github.com/arthlimchiu/CometChatPro-Tutorial.git`
-2. Open Android Studio
-3. Select `Open an existing Android Studio project`
-4. Go to where you cloned the repository
-5. Open `CometChatPro-Tutorial` folder
-6. In `res/values/strings.xml`, replace `appID` and `apiKey` with the your own App Id and API Key found in your
-CometChat Dashboard under `API Keys`
-7. Run the app
+1. Clone the repository `git clone https://github.com/arthlimchiu/CometChatPro-Tutorial.git`
+2. Open Android Studio and select **Open an existing Android Studio project**
+3. Select this repository
+4. In `res/values/strings.xml`, replace the `appID` and `apiKey` placeholder values with your own real `appID` and `appKey` which can be found in the [CometChat Pro dashboard](https://cometchat.com/pro).
+5. 
 
 ## Useful links
 
-* 📚Tutorial showing how we built this ample
-* ℹ️CometChat homepage
-* ℹ️CometChat Android documentation
+* 📚[Tutorial](https://prodocs.cometchat.com/docs)
 
 ## Other examples
 
-* [Complete JS app](https://github.com/cometchat-pro/javascript-reactjs-chat-app)
+* [Advanced Kotlin chat app](https://github.com/cometchat-pro/android-kotlin-chat-app)
+* [Advanced Java chat app](https://github.com/cometchat-pro/android-java-chat-app)
 
