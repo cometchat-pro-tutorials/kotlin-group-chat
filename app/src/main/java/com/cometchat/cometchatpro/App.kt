@@ -1,4 +1,4 @@
-package com.imakeanapp.cometchat
+package com.cometchat.cometchatpro
 
 import android.app.Application
 import android.util.Log

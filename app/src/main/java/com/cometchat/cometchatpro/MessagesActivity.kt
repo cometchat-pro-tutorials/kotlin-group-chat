@@ -1,8 +1,7 @@
-package com.imakeanapp.cometchat
+package com.cometchat.cometchatpro
 
 import android.os.Bundle
 import android.util.Log
-import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity

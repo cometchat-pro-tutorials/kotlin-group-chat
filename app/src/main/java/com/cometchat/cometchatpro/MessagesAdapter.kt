@@ -1,4 +1,4 @@
-package com.imakeanapp.cometchat
+package com.cometchat.cometchatpro
 
 import android.view.LayoutInflater
 import android.view.View

@@ -6,7 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.imakeanapp.cometchat"
+        applicationId "com.cometchat.cometchatpro"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
