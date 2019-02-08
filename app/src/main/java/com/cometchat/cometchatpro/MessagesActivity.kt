@@ -112,7 +112,7 @@ class MessagesActivity : AppCompatActivity() {
 
         messagesRequest.fetchPrevious(object : CometChat.CallbackListener<List<BaseMessage>>() {
             override fun onSuccess(messages: List<BaseMessage>) {
-                messagesAdapter.updateMessages(messages)
+                messagesAdapter.updateMessages(messages.filter { it is TextMessage })
                 scrollToBottom()
             }
 
