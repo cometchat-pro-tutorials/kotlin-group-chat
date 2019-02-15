@@ -10,15 +10,18 @@ This demo application shows how to build an Android group chat application with 
 
 ## Running the demo
 
-To run the demo follow these steps.
+To run the demo follow these steps:
 
-1. Create a CometChat account if you haven't already. [Create an account here](https://github.com/bookercodes/kotlin-group-chat/archive/master.zip).
-2. From the [dashboard](https://app.cometchat.com/#/apps) create a new application then click **Explore**
-3. Head to the **API Keys** tab on the left-hand-side then click **Create API Key** and create a **Full Access** key.
+1. [Create a CometChat account if you haven't already](https://app.cometchat.com)
+2. From the [dashboard](https://app.cometchat.com/#/apps), create a new application
+3. One created, click **Explore**
+4. Go to the **API Keys** tab on the left-hand-side and click **Create API Key**
+5. Craete an API key called "Key" with **Full Access**
 4. Download the repository [here](https://github.com/bookercodes/kotlin-group-chat/archive/master.zip) or by running `git clone https://github.com/arthlimchiu/CometChatPro-Tutorial.git` and open it in Android Studio
-5. Update `res/values/strings.xml` with your own app ID and the API key you just created
-6. Run the application in your emulator and login with one of the test users: superhero1, superhero2, superhero3, superhero4 or superhero5.\
-7. Get chatty
+5. Update [strings.xml](https://github.com/bookercodes/kotlin-group-chat/blob/master/app/src/main/res/values/strings.xml) with your own app ID and the API key you just created
+6. Run the application and login with one of the test users: superhero1, superhero2, superhero3, superhero4 or superhero5
+
+Questions about running the demo? [Open an issue](https://github.com/bookercodes/kotlin-group-chat/issues).
 
 
 ## Useful links
