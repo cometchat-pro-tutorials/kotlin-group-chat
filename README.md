@@ -4,13 +4,13 @@ Read the full tutorial here:
 
 [**>> Build a modern Android chat app with Kotlin**](https://paper.dropbox.com/doc/Build-a-modern-Android-chat-app-with-Kotlin--AXnKQvBG15aDT9uHJiOgeIblAg-RkqBGaoZOAfzHR1ARj3Hs)
 
-This example application shows how to build an Android group chat application with Kotlin:
+This demo application shows how to build an Android group chat application with Kotlin:
 
 <img src="screenshots/screenshot_1.png" height="512" width="280"> <img src="screenshots/screenshot_2.png" height="512" width="280">
 
 ## Running the demo
 
-To run the example application follow these steps.
+To run the demo follow these steps.
 
 1. Create a CometChat account if you haven't already. [Create an account here](https://github.com/bookercodes/kotlin-group-chat/archive/master.zip).
 2. From the [dashboard](https://app.cometchat.com/#/apps) create a new application then click **Explore**
