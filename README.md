@@ -4,8 +4,6 @@ Read the full tutorial here:
 
 [**>> Build a modern Android chat app with Kotlin**](https://paper.dropbox.com/doc/Build-a-modern-Android-chat-app-with-Kotlin--AXnKQvBG15aDT9uHJiOgeIblAg-RkqBGaoZOAfzHR1ARj3Hs)
 
-## Screenshot
-
 This example application shows how to build an Android group chat application with Kotlin:
 
 <img src="screenshots/screenshot_1.png" height="512" width="280"> <img src="screenshots/screenshot_2.png" height="512" width="280">
