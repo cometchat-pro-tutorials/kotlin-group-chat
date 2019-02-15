@@ -26,7 +26,7 @@ Questions about running the demo? [Open an issue](https://github.com/bookercodes
 
 ## Useful links
 
-- 🏠 [CometCaht Homepage](https://cometchat.com/pro)
+- 🏠 [CometChat Homepage](https://cometchat.com/pro)
 - 🚀 [Create your free account](https://app.cometchat.com/#/register)
 - 📚 [Documentation](https://prodocs.cometchat.com/docs)
 - 👾 [GitHub](https://github.com/CometChat-Pro)
