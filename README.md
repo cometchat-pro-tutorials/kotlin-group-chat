@@ -1,31 +1,37 @@
-# Android Chat App with Kotlin Example
+# Build a modern Android chat app with Kotlin
 
-This example shows how to build an anonymous group chat with Kotlin.
+Read the full tutorial here:
+
+[**>> Build a modern Android chat app with Kotlin**](https://paper.dropbox.com/doc/Build-a-modern-Android-chat-app-with-Kotlin--AXnKQvBG15aDT9uHJiOgeIblAg-RkqBGaoZOAfzHR1ARj3Hs)
+
+## Screenshot
+
+This example application shows how to build an Android group chat application with Kotlin:
 
 <img src="screenshots/screenshot_1.png" height="512" width="280"> <img src="screenshots/screenshot_2.png" height="512" width="280">
 
-Jump straight into the code or read the accompanying step-by-step guide [here](https://www.cometchat.com/blog/).
+## Running the demo
 
-## Technology
-This demo uses:
+To run the example application follow these steps.
 
-* CometChat Pro Kotlin 0.10
-* Kotlin
-* Material Design Theme
+1. Create a CometChat account if you haven't already. [Create an account here](https://github.com/bookercodes/kotlin-group-chat/archive/master.zip).
+2. From the [dashboard](https://app.cometchat.com/#/apps) create a new application then click **Explore**
+3. Head to the **API Keys** tab on the left-hand-side then click **Create API Key** and create a **Full Access** key.
+4. Download the repository [here](https://github.com/bookercodes/kotlin-group-chat/archive/master.zip) or by running `git clone https://github.com/arthlimchiu/CometChatPro-Tutorial.git` and open it in Android Studio
+5. Update `res/values/strings.xml` with your own app ID and the API key you just created
+6. Run the application in your emulator and login with one of the test users: superhero1, superhero2, superhero3, superhero4 or superhero5.\
+7. Get chatty
 
-## Running the demo locally
-1. Clone the repository `git clone https://github.com/arthlimchiu/CometChatPro-Tutorial.git`
-2. Open Android Studio and select **Open an existing Android Studio project**
-3. Select this repository
-4. In `res/values/strings.xml`, replace the `appID` and `apiKey` placeholder values with your own real `appID` and `appKey` which can be found in the [CometChat Pro dashboard](https://cometchat.com/pro).
-5. 
 
 ## Useful links
 
-* 📚[Tutorial](https://prodocs.cometchat.com/docs)
+- 🏠[Homepage](https://cometchat.com/pro)
+- 🚀[Create your free account](https://app.cometchat.com/#/register)
+- 📚[Documentation](https://prodocs.cometchat.com/docs)
+- 👾[GitHub](https://github.com/CometChat-Pro)
 
-## Other examples
 
-* [Advanced Kotlin chat app](https://github.com/cometchat-pro/android-kotlin-chat-app)
-* [Advanced Java chat app](https://github.com/cometchat-pro/android-java-chat-app)
+## Related examples
+
+* [Complete Kotlin team chat application with voice and video calling](https://github.com/cometchat-pro/android-kotlin-chat-app)
 
