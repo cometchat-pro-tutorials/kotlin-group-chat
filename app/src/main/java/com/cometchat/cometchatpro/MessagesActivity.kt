@@ -12,6 +12,7 @@ import com.cometchat.pro.core.CometChat
 import com.cometchat.pro.core.MessagesRequest
 import com.cometchat.pro.exceptions.CometChatException
 import com.cometchat.pro.models.BaseMessage
+import com.cometchat.pro.models.Group
 import com.cometchat.pro.models.TextMessage
 
 class MessagesActivity : AppCompatActivity() {
@@ -62,15 +63,11 @@ class MessagesActivity : AppCompatActivity() {
     }
 
     private fun joinGroup() {
-        CometChat.joinGroup(
-            roomID,
-            CometChatConstants.GROUP_TYPE_PUBLIC,
-            "",
-            object : CometChat.CallbackListener<String>() {
-                override fun onSuccess(successMessage: String) {
+        CometChat.joinGroup(roomID, CometChatConstants.GROUP_TYPE_PUBLIC, "", object : CometChat.CallbackListener<Group>() {
+
+                override fun onSuccess(group: Group) {
                     fetchMessages()
                 }
-
                 override fun onError(e: CometChatException) {
                     e.code?.let {
                         // For now, we'll just keep on attempting to join the group
@@ -84,11 +81,7 @@ class MessagesActivity : AppCompatActivity() {
     }
 
     private fun sendMessage() {
-        val textMessage = TextMessage(
-            roomID,
-            enterMessage.text.toString(),
-            CometChatConstants.MESSAGE_TYPE_TEXT,
-            CometChatConstants.RECEIVER_TYPE_GROUP
+        val textMessage = TextMessage(roomID, enterMessage.text.toString(),CometChatConstants.RECEIVER_TYPE_GROUP
         )
 
         CometChat.sendMessage(textMessage, object : CometChat.CallbackListener<TextMessage>() {

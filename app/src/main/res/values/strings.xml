@@ -6,4 +6,5 @@
     <string name="enter_message">Enter message…</string>
     <string name="appID">YOUR_APP_ID_HERE</string>
     <string name="apiKey">YOUR_API_KEY_HERE</string>
+    <string name="region">REGION</string>
 </resources>
