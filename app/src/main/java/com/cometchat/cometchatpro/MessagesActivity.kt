@@ -1,9 +1,9 @@
 package com.cometchat.cometchatpro
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -19,7 +19,7 @@ class MessagesActivity : AppCompatActivity() {
 
     private lateinit var enterMessage: EditText
     private lateinit var send: Button
-    private lateinit var messagesList: RecyclerView
+    private lateinit var messagesList: androidx.recyclerview.widget.RecyclerView
     private lateinit var messagesAdapter: MessagesAdapter
 
     private val listenerID = "MESSAGES_LISTENER"
@@ -33,7 +33,7 @@ class MessagesActivity : AppCompatActivity() {
         send = findViewById(R.id.send_message)
 
         messagesList = findViewById(R.id.messages)
-        val layoutMgr = LinearLayoutManager(this)
+        val layoutMgr = androidx.recyclerview.widget.LinearLayoutManager(this)
         layoutMgr.stackFromEnd = true
         messagesList.layoutManager = layoutMgr
 

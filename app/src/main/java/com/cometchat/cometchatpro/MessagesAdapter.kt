@@ -1,6 +1,6 @@
 package com.cometchat.cometchatpro
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +9,7 @@ import com.cometchat.pro.models.BaseMessage
 import com.cometchat.pro.models.TextMessage
 
 class MessagesAdapter(private val uid: String,
-                      private var messages: MutableList<BaseMessage>)  : RecyclerView.Adapter<MessagesAdapter.MessageViewHolder>() {
+                      private var messages: MutableList<BaseMessage>)  : androidx.recyclerview.widget.RecyclerView.Adapter<MessagesAdapter.MessageViewHolder>() {
 
     companion object {
         private const val SENT = 0
@@ -52,7 +52,7 @@ class MessagesAdapter(private val uid: String,
         notifyItemInserted(this.messages.size - 1)
     }
 
-    inner class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class MessageViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
 
         private val messageText: TextView = itemView.findViewById(R.id.message_text)
 
